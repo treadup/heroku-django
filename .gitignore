@@ -1,0 +1,15 @@
+# Python files
+*.pyc
+*.pyo
+
+# Database files
+*.sqlite3
+
+# Todo file
+*.org
+
+# The directory that Django collects all the static files in
+staticfiles
+
+# The directory used to store uploaded files
+storage

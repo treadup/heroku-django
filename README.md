@@ -34,3 +34,10 @@ looks something like the following.
 See the following link for more information about specifying the
 Python runtime.
 https://devcenter.heroku.com/articles/python-runtimes
+
+## Gunicorn WSGI server
+Django has a built in webserver but this webserver should not be used
+in production. Instead we need to use a third party webserver. The
+server that I usually go with is Gunicorn.
+
+    pip install gunicorn

@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 def index_view(request):
     return render(request, "website/index.html")
@@ -19,3 +20,7 @@ def login_view(request):
             return redirect(redirect_url)
 
     return render(request, 'website/login.html')
+
+@login_required
+def files_view(request):
+    return render(request, 'website/files.html')

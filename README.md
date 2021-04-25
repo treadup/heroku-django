@@ -41,3 +41,28 @@ in production. Instead we need to use a third party webserver. The
 server that I usually go with is Gunicorn.
 
     pip install gunicorn
+
+## Procfile
+The Procfile is used to tell heroku what processes to run. You can run
+both a web process and background processes.
+
+The Procfile has the filename Procfile and should be located in the
+root of the git repo. It has the following format.
+
+    <process type>: <command>
+
+For web applications the process type is web.
+
+    web: <command>
+
+To run a Django application with gunicorn you would use the following
+command.
+
+    web: gunicorn <django project name>.wsgi
+
+In our case the Django project is called herokudjango. That means our
+Procfile should look like the following.
+
+    web: gunicorn herokudjango.wsgi
+
+https://devcenter.heroku.com/articles/procfile

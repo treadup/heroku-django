@@ -23,3 +23,14 @@ Then add the following middleware just after the security middleware.
 See the following links for more information about whitenoise.
 https://devcenter.heroku.com/articles/django-assets#whitenoise
 http://whitenoise.evans.io/en/stable/
+
+## Specifying Python Runtime
+You can tell Heroku which version of Python to use when running your
+code by adding a runtime.txt file. The contents of a runtime.txt file
+looks something like the following.
+
+    python-3.9.4
+
+See the following link for more information about specifying the
+Python runtime.
+https://devcenter.heroku.com/articles/python-runtimes

@@ -5,7 +5,14 @@
 {% block content %}
     <div>
         <h2>Files</h2>
-        <p>This page is login protected. In the future this page
-            will show a list of files.</p>
+        <div>
+            {% for file in files %}
+                <div>
+                    <a href="{{ file.url }}">{{file.filename}}</a>
+                </div>
+            {% empty %}
+                There are no files.
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

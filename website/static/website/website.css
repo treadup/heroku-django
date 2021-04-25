@@ -8,6 +8,7 @@ html, body {
     margin-right: auto;
 }
 
+/* Header */
 header {
     color: white;
     background-color: black;
@@ -17,4 +18,28 @@ header {
 
 header a {
     color: white;
+}
+
+/* Login page */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20em;
+}
+
+.login-form label {
+    margin-top: 1em;
+
+}
+
+.login-form input[type=submit] {
+    margin-top: 1em;
+    color: white;
+    background-color: black;
+    border-style: none;
+    width: 6em;
+    padding: 1em;
 }

@@ -13,3 +13,6 @@ staticfiles
 
 # The directory used to store uploaded files
 storage
+
+# Environment variables when running a local heroku app
+.env

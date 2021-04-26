@@ -1,6 +1,49 @@
 # heroku-django
 Demonstrates how to run a Django application on Heroku.
 
+## Create Heroku Application
+Before you can create a heroku application you need to login.
+
+    heroku login
+
+To create the heroku application you use the following command.
+
+    heroku create <application name>
+
+This application was created using the following command.
+
+    heroku create heroku-django-application
+
+The app has the following url.
+
+    https://heroku-django-application.herokuapp.com/
+
+The following is the heroku git repo for the app.
+
+    https://git.heroku.com/heroku-django-application.git
+
+## Allowed hosts
+You will need to add heroku-django-application.herokuapp.com to the
+ALLOWED_HOSTS in the settings. At the same time you probably want to
+add 0.0.0.0 and localhost.
+
+## Deploying to Heroku with Git
+Heroku applications are deployed with git. If you created your
+application with the command `heroku create` then the heroku remote
+will have already been created for you.
+
+    $ git remote -v
+    heroku	https://git.heroku.com/heroku-django-application.git (fetch)
+    heroku	https://git.heroku.com/heroku-django-application.git (push)
+    origin	git@gitlab.com:treadup/heroku-django.git (fetch)
+    origin	git@gitlab.com:treadup/heroku-django.git (push)
+
+Otherwise you will have to create it yourself.
+
+To deploy to heroku use the following command.
+
+    git deploy heroku master
+
 ## Static assets
 Django does not support serving static assets in production. There is
 a third party package called whitenoise that can be used for this.

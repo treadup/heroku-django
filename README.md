@@ -129,6 +129,41 @@ file.
         }
     }
 
+## Heroku Postgres
+To provision a postgres server for your heroku application use the
+following command.
+
+    heroku addons:create heroku-postgresql:hobby-dev
+
+See the following link for more information about Heroku Postgres.
+https://elements.heroku.com/addons/heroku-postgresql
+
+## Heroku Postgres connection string
+Heroku will provide a connection string to your application as an
+environment variable. This connection string has the following format.
+
+    postgres://USER:PASSWORD@HOST:PORT/NAME
+
+To see your current connection string you can use the following command.
+
+    heroku config:get DATABASE_URL -a your-app
+
+## dj_database_url
+The dj_database_url package can read a Heroku connection string and
+return the data in a format suitable for a django application. First
+install it using the following command.
+
+    pip install dj_database_url
+
+Then configure the database connection using dj_database_url in the
+settings.py file.
+
+    import dj_database_url
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
+See the following urls for more information.
+https://github.com/kennethreitz/dj-database-url
+https://devcenter.heroku.com/articles/heroku-postgresql#connecting-in-python
 
 ## Create remote superuser
 To create a super user on the remote system use the following command.

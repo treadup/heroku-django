@@ -109,3 +109,8 @@ Procfile should look like the following.
     web: gunicorn herokudjango.wsgi
 
 https://devcenter.heroku.com/articles/procfile
+
+## Create remote superuser
+To create a super user on the remote system use the following command.
+
+    heroku run python manage.py createsuperuser

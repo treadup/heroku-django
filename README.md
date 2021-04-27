@@ -110,6 +110,26 @@ Procfile should look like the following.
 
 https://devcenter.heroku.com/articles/procfile
 
+## Postgres
+To install the database client for Postgres use the following command.
+
+    pip install psycopg2-binary
+
+Next you need to configure the database settings in the settings.py
+file.
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'databasename',
+            'USER': 'username',
+            'PASSWORD': 'password',
+            'HOST': 'hostname',
+            'PORT': '5432'
+        }
+    }
+
+
 ## Create remote superuser
 To create a super user on the remote system use the following command.
 

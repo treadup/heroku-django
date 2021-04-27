@@ -153,7 +153,7 @@ The dj_database_url package can read a Heroku connection string and
 return the data in a format suitable for a django application. First
 install it using the following command.
 
-    pip install dj_database_url
+    pip install dj-database-url
 
 Then configure the database connection using dj_database_url in the
 settings.py file.
@@ -164,6 +164,16 @@ settings.py file.
 See the following urls for more information.
 https://github.com/kennethreitz/dj-database-url
 https://devcenter.heroku.com/articles/heroku-postgresql#connecting-in-python
+
+## Running Django migrations on Heroku
+When deploying the application to Heroku you want to run the database
+migrations as part of the deployment step. Do this by adding the
+following command as the first line in the Procfile
+
+    release: python manage.py migrate
+
+See the following url for more information.
+https://help.heroku.com/GDQ74SU2/django-migrations
 
 ## Create remote superuser
 To create a super user on the remote system use the following command.

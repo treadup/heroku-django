@@ -179,3 +179,58 @@ https://help.heroku.com/GDQ74SU2/django-migrations
 To create a super user on the remote system use the following command.
 
     heroku run python manage.py createsuperuser
+
+## Media files in S3
+To have the media files stored in S3 you have to configure a storage
+engine that can work with S3. We are going to be using
+django-storages. Since we are working with AWS we will also need to
+install boto3.
+
+    pip install boto3 django-storages
+
+Next we configure Django to use the S3Boto3Storage engine when working
+with media files.
+
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+You have to set the following environment variables.
+
+    AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY
+    AWS_STORAGE_BUCKET_NAME
+
+See the following URL for more information.
+https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html
+
+## Heroku Headers
+Heroku adds the following headers to your requests.
+
+- X-Forwarded-For: the originating IP address of the client connecting to the Heroku router
+- X-Forwarded-Proto: the originating protocol of the HTTP request (example: https)
+- X-Forwarded-Port: the originating port of the HTTP request (example: 443)
+- X-Request-Start: unix timestamp (milliseconds) when the request was received by the router
+- X-Request-Id: the Heroku HTTP Request ID
+- Via: a code name for the Heroku router
+
+To see if the original request is using http or https look at the
+X-Forwareded-Proto header.
+
+See the following URL for more information.
+https://devcenter.heroku.com/articles/http-routing#heroku-headers
+
+## Force TLS
+Heroku
+To force the Django application to use TLS/SSL you can use the
+following middleware.
+
+    MIDDLEWARE = [
+        # SecurityMiddleware must be listed before other middleware
+        'django.middleware.security.SecurityMiddleware',
+        # ...
+    ]
+
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_SSL_REDIRECT = True
+
+See the following URL for more information.
+https://help.heroku.com/J2R1S4T8/can-heroku-force-an-application-to-use-ssl-tls
